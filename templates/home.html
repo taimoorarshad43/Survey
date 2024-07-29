@@ -1,0 +1,17 @@
+<!-- Shows the title of the survery, the instructions and a button to start the survey -->
+
+{% extends 'base.html' %}
+
+{%block title%}Survey{%endblock%}
+
+{%block header%}{{survey_title}}{%endblock%} 
+
+{%block content%}
+<p>
+    {{survey_instructions}}
+</p>
+<!-- <form action="/question/0"> -->
+<form action="/session" method = "POST">
+    <button>Start the Survey!</button>
+</form>
+{%endblock%}

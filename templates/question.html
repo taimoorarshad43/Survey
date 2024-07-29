@@ -1,0 +1,27 @@
+<!-- Question content and a radio button for the different choices -->
+{% extends 'base.html' %}
+
+{%block title%}Survey{%endblock%}
+
+{%block header%}Question {{question_no}}{%endblock%} 
+
+{%block content%}
+{%with messages = get_flashed_messages()%}
+    {%if messages%}
+        {% for msg in messages%}
+        <p>{{msg}}</p>
+        {% endfor%}
+    {%endif%}
+{%endwith%}
+<p>
+    {{question}}
+</p>
+<form action="/answer" method = "POST">
+    {%for choice in choices%}
+    <input type = "radio" id ="{{choice}}" name = "responses" value = "{{choice}}">
+    <label for = "{{choice}}">{{choice}}</label><br>
+    {% endfor %}
+    <p></p>
+    <button>Submit</button>
+</form>
+{%endblock%}
